@@ -10,27 +10,34 @@
 ## Installation
 
 ```bash
-$ npm install
+> npm install
 ```
 
 ## Running the app
 
 ```bash
 # development
-$ yarn start
+> yarn start
 
 # watch mode
-$ yarn start:dev
+> yarn start:dev
 
 # build application
-$ yarn build
+> yarn build
 
 # production mode
-$ yarn start:prod
+> yarn start:prod
+```
+
+## Docker
+
+```bash
+# Load Mongo Database Image
+> docker-compose up -d
 ```
 
 ## Build Application
 
 ```bash
-$ yarn build
+> yarn build
 ```
