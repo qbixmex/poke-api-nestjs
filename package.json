@@ -1,8 +1,8 @@
 {
   "name": "pokedex",
-  "version": "0.2.0",
-  "description": "",
-  "author": "",
+  "version": "0.3.0",
+  "description": "Pokedex api application",
+  "author": "Daniel González Briseño",
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
@@ -23,6 +23,7 @@
   "dependencies": {
     "@nestjs/common": "^9.0.0",
     "@nestjs/core": "^9.0.0",
+    "@nestjs/mapped-types": "*",
     "@nestjs/platform-express": "^9.0.0",
     "@nestjs/serve-static": "^3.0.0",
     "reflect-metadata": "^0.1.13",
