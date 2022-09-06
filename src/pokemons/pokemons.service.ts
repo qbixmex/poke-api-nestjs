@@ -14,7 +14,8 @@ export class PokemonsService {
   }
 
   create(createPokemonDto: CreatePokemonsDto) {
-    return 'This action adds a new pokemon';
+    createPokemonDto.name = createPokemonDto.name.toLowerCase();
+    return createPokemonDto;
   }
 
   update(id: number, updatePokemonDto: UpdatePokemonDto) {
@@ -24,4 +25,5 @@ export class PokemonsService {
   remove(id: number) {
     return `This action removes a #${id} pokemon`;
   }
+
 }

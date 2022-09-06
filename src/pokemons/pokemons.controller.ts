@@ -5,6 +5,7 @@ import { UpdatePokemonDto } from './dto/update-pokemons.dto';
 
 @Controller('pokemons')
 export class PokemonsController {
+
   constructor(private readonly pokemonService: PokemonsService) {}
 
   @Get()
