@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, HttpCode, HttpStatus } from '@nestjs/common';
 import { PokemonsService } from './pokemons.service';
 import { CreatePokemonsDto } from './dto/create-pokemons.dto';
 import { UpdatePokemonDto } from './dto/update-pokemons.dto';
@@ -19,6 +19,7 @@ export class PokemonsController {
   }
 
   @Post()
+  @HttpCode( HttpStatus.CREATED )
   create(@Body() createPokemonDto: CreatePokemonsDto) {
     return this.pokemonService.create(createPokemonDto);
   }
