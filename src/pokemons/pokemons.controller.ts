@@ -1,7 +1,10 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, HttpCode, HttpStatus } from '@nestjs/common';
+import {
+  Controller, Param, Get, Post, Body, Patch, Delete, HttpCode, HttpStatus
+} from '@nestjs/common';
 import { PokemonsService } from './pokemons.service';
 import { CreatePokemonsDto } from './dto/create-pokemons.dto';
 import { UpdatePokemonDto } from './dto/update-pokemons.dto';
+import { ParseMongoIdPipe } from '../common/pipes/parse-mongo-id.pipe';
 
 @Controller('pokemons')
 export class PokemonsController {
@@ -33,7 +36,7 @@ export class PokemonsController {
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string) {
+  remove(@Param('id', ParseMongoIdPipe) id: string) {
     return this.pokemonService.remove(id);
   }
 }
