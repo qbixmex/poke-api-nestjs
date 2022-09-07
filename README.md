@@ -28,6 +28,18 @@
 > docker-compose up -d
 ```
 
+### 4. Seed Database
+
+Execute this endpoint into Postman, RapidApi ... or any browser.
+
+```
+http://localhost:3000/api/v2/seed
+
+Or
+
+http://localhost:3000/api/v2/seed/alternative
+```
+
 ## Running the app
 
 ```bash
