@@ -5,6 +5,7 @@ import axios, { AxiosInstance } from 'axios';
 
 import { PokemonResponse } from './interfaces/poke-response.interface';
 import { Pokemon } from '../pokemons/entities/pokemon.entity';
+import { Poke } from './interfaces/poke.interfaces';
 
 @Injectable()
 export class SeedService {
@@ -17,16 +18,43 @@ export class SeedService {
   ) {}
 
   async populate() {
-    const { data } = await this.axios.get<PokemonResponse>('https://pokeapi.co/api/v2/pokemon?limit=10');
 
-    data.results.forEach(async ({ name, url }) => {
+    await this.pokemonsModel.deleteMany({});
+
+    const { data } = await this.axios.get<PokemonResponse>('https://pokeapi.co/api/v2/pokemon?limit=650');
+
+    const insertPromisesArray = [];
+
+    data.results.forEach(({ name, url }) => {
       const segments = url.split('/');
       const no: number = +segments[segments.length - 2];
-
-      const pokemon = await this.pokemonsModel.create({ name, no });
+      insertPromisesArray.push( this.pokemonsModel.create({ name, no }) );
     });
 
+    await Promise.all(insertPromisesArray);
+
     return 'Seeds Populated';
+
+  }
+
+  async populateAlternative() {
+
+    await this.pokemonsModel.deleteMany({});
+
+    const { data } = await this.axios.get<PokemonResponse>('https://pokeapi.co/api/v2/pokemon?limit=650');
+
+    const pokemonToInsert: Poke[] = [];
+
+    data.results.forEach(({ name, url }) => {
+      const segments = url.split('/');
+      const no: number = +segments[segments.length - 2];
+      pokemonToInsert.push({ name, no });
+    });
+
+    await this.pokemonsModel.insertMany(pokemonToInsert);
+
+    return 'Seeds Populated';
+
   }
 
 }

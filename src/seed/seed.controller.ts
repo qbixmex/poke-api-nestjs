@@ -10,4 +10,9 @@ export class SeedController {
     return this.seedService.populate();
   }
 
+  @Get('alternative')
+  executeSeedAlternative() {
+    return this.seedService.populateAlternative();
+  }
+
 }
