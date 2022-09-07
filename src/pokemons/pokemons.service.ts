@@ -35,7 +35,7 @@ export class PokemonsService {
 
     if ( !pokemon ) {
       console.log(pokemon);
-      throw new NotFoundException(`Pokemon with search term "${ term }" not found in DB!`)
+      throw new NotFoundException(`Pokemon with search term "${ term }" not found in DB!`);
     }
 
     return pokemon;
@@ -87,8 +87,13 @@ export class PokemonsService {
   }
 
   async remove(id: string) {
-    const result = await this.pokemonModel.findByIdAndDelete(id);
-    return result;
+
+    const { deletedCount } = await this.pokemonModel.deleteOne({ _id: id });
+
+    if ( deletedCount === 0 ) {
+      throw new NotFoundException(`Pokemon with id "${ id }" not found in DB!`);
+    }
+
   }
 
   private handleExceptions( error: any ) {
