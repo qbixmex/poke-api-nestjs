@@ -1,0 +1,33 @@
+@hostUrl = localhost
+@port = 3000
+@host = {{hostUrl}}:{{port}}
+@contentType = application/json
+
+### All POKEMONS
+GET http://{{host}}/api/v2/pokemons
+
+### All POKEMONS WITH QUERIES
+GET http://{{host}}/api/v2/pokemons?limit=10&offset=645
+
+### Get POKEMON
+GET http://{{host}}/api/v2/pokemons/electros
+
+### Create Pokemon
+POST http://{{host}}/api/v2/pokemon
+Content-Type: {{contentType}}
+
+{
+    "name": "rare",
+    "no": 1000
+}
+
+### Update Pokemon
+PATCH http://{{host}}/api/v2/pokemons/631a3967a6f89140e3b72b80
+Content-Type: {{contentType}}
+
+{
+    "name": "electro"
+}
+
+### Delete Pokemon
+DELETE http://{{host}}/api/v2/pokemons/631a3967a6f89140e3b72b80
