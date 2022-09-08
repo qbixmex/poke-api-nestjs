@@ -13,5 +13,6 @@ import { AppModule } from './app.module';
       enableImplicitConversion: true
     }
   }));
-  await app.listen(3000);
+  await app.listen(process.env.PORT);
+  console.log(`App Running at port: ${process.env.PORT}`);
 })();

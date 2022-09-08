@@ -40,6 +40,17 @@ Or
 http://localhost:3000/api/v2/seed/alternative
 ```
 
+### 5. Environment Variables
+
+Copy __.env.template__ content into a new file __.env__ at root (note: outside src/ folder).
+
+```
+# example
+MONGODB=mongodb://localhost:27017/nest-pokemon
+PORT=3000
+DEFAULT_LIMIT=10
+```
+
 ## Running the app
 
 ```bash
